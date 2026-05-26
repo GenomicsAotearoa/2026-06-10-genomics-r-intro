@@ -114,7 +114,7 @@ pre_survey: "https://forms.office.com/r/fcrssEf7uw"
 post_survey: "https://forms.office.com/r/bT356hhRAw"
 
 # Start time in minutes (0 to be clock-independent, 540 to show a start at 09:00 am).
-start_time: 0
+start_time: 570
 
 # Specify that things in the episodes collection should be output.
 collections:
