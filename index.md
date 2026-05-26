@@ -3,8 +3,8 @@ layout: workshop      # DON'T CHANGE THIS.
 # More detailed instructions (including how to fill these variables for an
 # online workshop) are available at
 # https://carpentries.github.io/workshop-template/customization/index.html
-venue: "online: [intro-r](https://intro-r-ood-webnode.data.nesi.org.nz)"        # brief name of the institution that hosts the workshop without address (e.g., "Euphoric State University")
-address: "online: [intro-r](https://intro-r-ood-webnode.data.nesi.org.nz)"      # full street address of workshop (e.g., "Room A, 123 Forth Street, Blimingen, Euphoria"), videoconferencing URL, or 'online'
+venue: "NeSI - Online"        # brief name of the institution that hosts the workshop without address (e.g., "Euphoric State University")
+address: "online"      # full street address of workshop (e.g., "Room A, 123 Forth Street, Blimingen, Euphoria"), videoconferencing URL, or 'online'
 country: "nz"      # lowercase two-letter ISO country code such as "fr" (see https://en.wikipedia.org/wiki/ISO_3166-1#Current_codes) for the institution that hosts the workshop
 language: "en"     # lowercase two-letter ISO language code such as "fr" (see https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) for the workshop
 latitude: "0"        # decimal latitude of workshop venue (use https://www.latlong.net/)
@@ -264,7 +264,7 @@ Display the contact email address set in the configuration file.
 <p id="workshops-faq">
   <strong>Workshops FAQ:</strong>
   For answers to frequently asked questions about workshops,
-  refer to <a href="[https://carpentries.org/workshops/workshops-faq/](https://carpentries.org/workshops/workshops-faq/)">the Carpentries Workshop FAQ</a>.
+  refer to <a href="https://carpentries.org/workshops/workshops-faq/">the Carpentries Workshop FAQ</a>.
 </p>
 
 {% comment %}
@@ -379,16 +379,7 @@ of code below the Schedule `<h2>` header below with
 
 <h2 id="schedule">Schedule</h2>
 
-{% if site.carpentry == "swc" %}
-{% include swc/schedule.html %}
-{% elsif site.carpentry == "dc" %}
-{% include dc/schedule.html %}
-{% elsif site.carpentry == "lc" %}
-{% include lc/schedule.html %}
-{% elsif site.carpentry == "incubator" %}
-This workshop is teaching a lesson in 
-<a href="https://carpentries-incubator.org/">The Carpentries Incubator</a>. Please check <a href="{{site.incubator_lesson_site}}">the lesson homepage</a> for a list of lesson sections and estimated timings.
-{% endif %}
+{% include custom-schedule.html %}
 
 {% comment %}
 Edit/replace the text above if you want to include a schedule table.
@@ -418,51 +409,33 @@ please preview your site before committing, and make sure to run
 <h2 id="setup">Setup</h2>
 
 <p>
-  To participate in a
-  {% if site.carpentry == "swc" %}
-  Software Carpentry
-  {% elsif site.carpentry == "dc" %}
-  Data Carpentry
-  {% elsif site.carpentry == "lc" %}
-  Library Carpentry
-  {% endif %}
-  workshop,
-  you will need access to software as described below.
-  In addition, you will need an up-to-date web browser.
+  This workshop runs entirely in your web browser using the
+  <a href="https://intro-r-ood-webnode.data.nesi.org.nz">NeSI Open OnDemand RStudio environment</a>.
+  No local software installation is required.
 </p>
+
+<h3>What you need</h3>
+<ul>
+  <li>An up-to-date web browser (Chrome or Firefox recommended)</li>
+  <li>A NeSI account — if you do not have one, your instructor will provide login details before the workshop</li>
+</ul>
+
+<h3>Accessing RStudio on NeSI</h3>
+<ol>
+  <li>Open your browser and go to <a href="https://intro-r-ood-webnode.data.nesi.org.nz">https://intro-r-ood-webnode.data.nesi.org.nz</a></li>
+  <li>Log in with your NeSI credentials</li>
+  <li>Launch the RStudio Server app</li>
+</ol>
+
 <p>
-  We maintain a list of common issues that occur during installation as a reference for instructors
-  that may be useful on the
-  <a href = "{{site.swc_github}}/workshop-template/wiki/Configuration-Problems-and-Solutions">Configuration Problems and Solutions wiki page</a>.
+  If you have any trouble accessing the platform before the workshop, please
+  {% if page.email %}
+  email
+  {% for email in page.email %}{% if forloop.last and page.email.size > 1 %}or {% endif %}<a href="mailto:{{email}}">{{email}}</a>{% unless forloop.last %}, {% endunless %}{% endfor %}
+  {% endif %}
+  for help.
 </p>
 
-{% comment %}
-For online workshops, the section below provides:
-- installation instructions for the Zoom client
-- recommendations for setting up Learners' workspace so they can follow along
-  the instructions and the videoconferencing
-
-If you do not use Zoom for your online workshop, edit the file
-`_includes/install_instructions/videoconferencing.html`
-to include the relevant installation instructions.
-{% endcomment %}
 {% if online != "false" %}
 {% include install_instructions/videoconferencing.html %}
-{% endif %}
-
-{% comment %}
-These are the installation instructions for the tools used
-during the workshop.
-{% endcomment %}
-
-{% if site.carpentry == "swc" %}
-{% include swc/setup.html %}
-{% elsif site.carpentry == "dc" %}
-{% include dc/setup.html %}
-{% elsif site.carpentry == "lc" %}
-{% include lc/setup.html %}
-{% elsif site.carpentry == "incubator" %}
-Please check the "Setup" page of
-<a href="{{site.incubator_lesson_site}}">the lesson homepage</a> for instructions to follow
-to obtain the software and data you will need to follow the lesson.
 {% endif %}
