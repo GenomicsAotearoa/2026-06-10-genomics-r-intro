@@ -66,18 +66,11 @@ are not using Eventbrite, or leave it in, since it will not be
 displayed if the 'eventbrite' field in the header is not set.
 {% endcomment %}
 {% if page.eventbrite %}
-<strong>Some adblockers block the registration window. If you do not see the
-  registration box below, please check your adblocker settings.</strong>
-<div id="eventbrite-widget-container"></div>
-<script src="https://www.eventbrite.com/static/widgets/eb_widgets.js"></script>
-<script type="text/javascript">
-    window.EBWidgets.createWidget({
-        // Required
-        widgetType: 'checkout',
-        eventId: {{page.eventbrite}},
-        iframeContainerId: 'eventbrite-widget-container',
-    });
-</script>
+<p class="text-center">
+  <a href="https://www.eventbrite.co.nz/e/introduction-to-r-tickets-{{ page.eventbrite }}" target="_blank">
+    <button type="button" class="btn btn-success btn-lg">Register here</button>
+  </a>
+</p>
 {% endif %}
 
 
